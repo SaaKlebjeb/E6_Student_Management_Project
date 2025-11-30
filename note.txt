@@ -1,0 +1,21 @@
+<!--
+Advanced Student Management Dashboard
+Files included in this single document:
+  - main.html
+  - main.css
+  - main.js
+
+How to use:
+  1. Save the three sections as separate files: main.html, main.css, main.js
+  2. Open main.html in your browser. It works fully offline (uses localStorage) and optionally supports a REST API toggle.
+  3. For charts and icons this file uses CDN for Chart.js and Font Awesome.
+
+Features:
+  - Responsive, modern dashboard UI with sidebar and topbar
+  - Add / Edit / Delete / Bulk Delete / Undo Delete
+  - Search (debounced), sort, filter, pagination
+  - CSV import & export
+  - LocalStorage by default; toggle to use remote REST API via `API_MODE` variable
+  - Client-side validation and toast notifications
+  - Simple analytics chart (students by major)
+-->

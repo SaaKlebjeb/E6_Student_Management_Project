@@ -1,0 +1,137 @@
+<!-- ========== main.html ========== -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Advanced Student Management Dashboard</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="" crossorigin="anonymous" />
+
+   <!-- App CSS -->
+  <link rel="stylesheet" href="main.css">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div id="app" class="app-grid">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">📚 <strong>StudentDash</strong></div>
+      <nav>
+        <a class="active" data-section="students"><i class="fa-solid fa-user-graduate"></i> Students</a>
+        <a data-section="analytics"><i class="fa-solid fa-chart-simple"></i> Analytics</a>
+        <a data-section="settings"><i class="fa-solid fa-gear"></i> Settings</a>
+      </nav>
+      <div class="sidebar-footer">Built with ♥</div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main">
+      <header class="topbar">
+        <div class="search-wrap">
+          <input id="search" type="search" placeholder="Search students, email, major..." />
+        </div>
+        <div class="top-controls">
+          <label class="switch"><input id="apiToggle" type="checkbox"><span></span></label>
+          <button id="importBtn" class="btn small">Import CSV</button>
+          <button id="exportBtn" class="btn small outline">Export CSV</button>
+          <button id="addBtn" class="btn primary">+ Add Student</button>
+        </div>
+      </header>
+
+      <section id="section-students" class="section active">
+        <div class="panel">
+          <div class="panel-header">
+            <h2>Students</h2>
+            <div class="filters">
+              <select id="filterMajor"><option value="">All majors</option></select>
+              <select id="sortBy">
+                <option value="name_asc">Name ↑</option>
+                <option value="name_desc">Name ↓</option>
+                <option value="email_asc">Email ↑</option>
+                <option value="major_asc">Major ↑</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="panel-body">
+            <div class="table-responsive">
+              <table class="table" id="studentsTable">
+                <thead>
+                  <tr>
+                    <th><input id="selectAll" type="checkbox"></th>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Major</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+
+            <div class="table-footer">
+              <div class="pager">
+                <button id="prevPage" class="btn small">Prev</button>
+                <span id="pageInfo">Page 1</span>
+                <button id="nextPage" class="btn small">Next</button>
+              </div>
+              <div>
+                <button id="bulkDeleteBtn" class="btn danger small">Delete Selected</button>
+                <button id="undoBtn" class="btn small">Undo</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="section-analytics" class="section">
+        <div class="panel">
+          <div class="panel-header"><h2>Analytics</h2></div>
+          <div class="panel-body">
+            <canvas id="majorChart" height="120"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <section id="section-settings" class="section">
+        <div class="panel">
+          <div class="panel-header"><h2>Settings</h2></div>
+          <div class="panel-body">
+            <div class="setting-row">
+              <label>API Mode</label>
+              <div>Toggle to switch between LocalStorage (default) and Remote REST API (for dev/testing).</div>
+            </div>
+            <div class="setting-row">
+              <label>Items per page</label>
+              <input id="pageSize" type="number" min="5" max="100" value="8">
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Modals -->
+  <div id="modalRoot"></div>
+
+  <!-- Hidden file input for CSV import -->
+  <input id="csvFile" type="file" accept=".csv" style="display:none">
+
+  <!-- App JS -->
+  <script src="main.js" type="module"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+

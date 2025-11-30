@@ -1,7 +1,7 @@
 // Advanced Student Management App (ES Module) - main.js
 
 // -------------------- Configuration --------------------
-const API_MODE = true; // if true, app will try to call REST endpoints defined in Api.REST_URL
+const API_MODE = false; // if true, app will try to call REST endpoints defined in Api.REST_URL
 
 // -------------------- Utility helpers --------------------
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
